@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { Activity, Book, Droplet, Home, PieChart, PillIcon as Pills, User } from 'lucide-react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
+import { useRouter } from 'next/navigation'
 
 const bloodSugarData = [
   { time: '6am', level: 120 },
@@ -17,6 +18,8 @@ const bloodSugarData = [
 ]
 
 export function DiabetesAppComponent() {
+  const router = useRouter();
+
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
@@ -29,7 +32,15 @@ export function DiabetesAppComponent() {
             <li><a href="#" className="flex items-center space-x-2 hover:bg-[#45a049] p-2 rounded"><Pills size={20} /><span>Medication</span></a></li>
             <li><a href="#" className="flex items-center space-x-2 hover:bg-[#45a049] p-2 rounded"><Activity size={20} /><span>Activity</span></a></li>
             <li><a href="#" className="flex items-center space-x-2 hover:bg-[#45a049] p-2 rounded"><Book size={20} /><span>Resources</span></a></li>
-            <li><a href="#" className="flex items-center space-x-2 hover:bg-[#45a049] p-2 rounded"><User size={20} /><span>Profile</span></a></li>
+            <li>
+              <a 
+                onClick={() => router.push('/profile')} 
+                className="flex items-center space-x-2 hover:bg-[#45a049] p-2 rounded cursor-pointer"
+              >
+                <User size={20} />
+                <span>Profile</span>
+              </a>
+            </li>
           </ul>
         </nav>
       </aside>
@@ -42,7 +53,11 @@ export function DiabetesAppComponent() {
             <Button variant="outline" className="text-white border-white hover:bg-white hover:text-[#4CAF50]">
               <PieChart className="mr-2 h-4 w-4" /> Reports
             </Button>
-            <Button variant="outline" className="text-white border-white hover:bg-white hover:text-[#4CAF50]">
+            <Button
+              variant="outline"
+              className="text-white border-white hover:bg-white hover:text-[#4CAF50]"
+              onClick={() => router.push('/profile')}
+            >
               <User className="mr-2 h-4 w-4" /> Profile
             </Button>
           </div>

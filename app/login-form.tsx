@@ -25,6 +25,7 @@ export default function LoginForm() {
       // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 1000))
 
+      // Navigate to the diabetes app page
       router.push('/diabetesapp')
     } catch (error) {
       console.error(error);
